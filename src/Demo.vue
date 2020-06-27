@@ -27,7 +27,7 @@ export default defineComponent({
 
 <template>
   <div>
-    <select name="examples">
+    <select name="examples" :value="selectedExample.title">
       <option v-for="(title, index) in exampleTitles" :key="index" @click="selectExample(index)" v-text="title" />
     </select>
     <hr />

@@ -15,6 +15,12 @@ const EXAMPLES: Example[] = [
       type: 'integer',
     },
   },
+  {
+    title: 'Number field - basic float',
+    jsonSchema: {
+      type: 'number',
+    },
+  },
   // string field
   {
     title: 'String field - basic',
