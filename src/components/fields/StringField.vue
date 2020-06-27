@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
+import { defineComponent, PropType, computed } from 'vue';
 
 import { JsonSchema, UISchema, StringFieldProps } from '/@/types';
 
@@ -17,6 +17,8 @@ export default defineComponent({
       console.debug('StringField: emit', newValue);
     }
     return {
+      title: computed(() => props.jsonSchema.title),
+      description: computed(() => props.jsonSchema.description),
       onUpdate,
     };
   },
@@ -25,6 +27,8 @@ export default defineComponent({
 
 <template>
   <div class="string-field">
+    <label class="title" v-if="title" v-text="title" />
+    <p class="description" v-if="description" v-text="description" />
     <input
       :value="formData"
       @input="onUpdate($event.target.value)"

@@ -2,7 +2,7 @@
 /**
  * Demo component with different examples
  */
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, computed } from 'vue';
 
 import FormBuilder from './components/FormBuilder.vue';
 import EXAMPLES from './demo-examples';
@@ -11,28 +11,29 @@ export default defineComponent({
   name: 'Demo',
   components: { FormBuilder },
   setup() {
-    const selectedIndex = ref(0);
-    const formData = ref(undefined);
-    function select(index: number) {
+    let formData = ref<any>(undefined);
+    let selectedIndex= ref(0);
+    const exampleTitles = EXAMPLES.map((e) => e.title);
+    const selectedExample = computed(() => EXAMPLES[selectedIndex.value]);
+    function selectExample(index: number) {
       selectedIndex.value = index;
-      formData.value = EXAMPLES[index].formData;
+      formData.value = selectedExample.value.formData;
     }
-    select(0);
-    return { EXAMPLES, formData, selectedIndex, select };
+    return { formData, selectedIndex, exampleTitles, selectedExample, selectExample };
   },
 });
 </script>
 
 <template>
   <div>
-    <select name="examples" @change="select($event.target.selectedIndex)">
-      <option v-for="(ex, index) in EXAMPLES" :key="index" v-text="ex.title" />
+    <select name="examples">
+      <option v-for="(title, index) in exampleTitles" :key="index" @click="selectExample(index)" v-text="title" />
     </select>
     <hr />
     <div class="grid">
       <FormBuilder
-        :jsonSchema="EXAMPLES[selectedIndex].jsonSchema"
-        :uiSchema="EXAMPLES[selectedIndex].uiSchema"
+        :jsonSchema="selectedExample.jsonSchema"
+        :uiSchema="selectedExample.uiSchema"
         v-model:formData="formData"
       />
       <div class="column2">
@@ -41,11 +42,11 @@ export default defineComponent({
         <!-- JSON schema -->
         <hr />
         <h3>JSON Schema</h3>
-        <pre>{{ EXAMPLES[selectedIndex].jsonSchema }}</pre>
+        <pre>{{ selectedExample.jsonSchema }}</pre>
         <!-- UI schema -->
         <hr />
         <h3>UI Schema</h3>
-        <pre>{{ EXAMPLES[selectedIndex].uiSchema }}</pre>
+        <pre>{{ selectedExample.uiSchema }}</pre>
       </div>
     </div>
   </div>

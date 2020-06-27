@@ -8,10 +8,19 @@ export interface Example {
 }
 
 const EXAMPLES: Example[] = [
+  // string field
   {
-    title: 'Basic string',
+    title: 'String field - basic',
     jsonSchema: {
       type: 'string'
+    },
+  },
+  {
+    title: 'String field - basic with title and description',
+    jsonSchema: {
+      type: 'string',
+      title: 'the title',
+      description: 'the description'
     },
   }
 ];
