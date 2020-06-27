@@ -45,7 +45,7 @@ const EXAMPLES: Example[] = [
     },
   },
   {
-    title: 'String-field - with constraints',
+    title: 'String-field - with min and max length',
     jsonSchema: {
       type: 'string',
       minLength: 2,

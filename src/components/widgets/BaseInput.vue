@@ -19,6 +19,11 @@ export default defineComponent({
           max: props.jsonSchema.maximum,
           step: props.jsonSchema.multipleOf ?? (props.jsonSchema.type === 'number' ? 'any' : 1),
         };
+      } else if (props.jsonSchema.type === 'string') {
+        extraAttrs = {
+          minlength: props.jsonSchema.minLength,
+          maxlength: props.jsonSchema.maxLength,
+        }
       };
       return mergeProps(extraAttrs, attrs);
     })
