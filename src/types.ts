@@ -4,8 +4,8 @@ export type JsonSchema = JSONSchema7;
 export type JsonSchemaType = JSONSchema7TypeName;
 export type UISchema = Record<string, any>;
 
-export interface StringFieldProps {
-  formData: string;
+export interface FieldProps<T = any> {
+  formData: T;
   jsonSchema: JsonSchema;
   uiSchema: UISchema;
 }

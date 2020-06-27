@@ -8,6 +8,13 @@ export interface Example {
 }
 
 const EXAMPLES: Example[] = [
+  // number field
+  {
+    title: 'Number field - basic integer',
+    jsonSchema: {
+      type: 'integer',
+    },
+  },
   // string field
   {
     title: 'String field - basic',

@@ -4,15 +4,16 @@
  */
 import { computed, defineComponent, Component, PropType } from 'vue';
 
+import NumberField from './NumberField.vue';
 import StringField from './StringField.vue';
 import { JsonSchema, JsonSchemaType, UISchema } from '/@/types';
 
 const FIELD_MAPPING: Record<JsonSchemaType, Component | undefined> = {
   array: undefined,
   boolean: undefined,
-  integer: undefined,
+  integer: NumberField,
   null: undefined,
-  number: undefined,
+  number: NumberField,
   string: StringField,
   object: undefined,
 };
@@ -20,7 +21,7 @@ const FIELD_MAPPING: Record<JsonSchemaType, Component | undefined> = {
 export default defineComponent({
   name: 'BaseField',
   props: {
-    formData: { type: String, default: undefined },
+    formData: { type: [String, Number], default: undefined },
     jsonSchema: { type: Object as PropType<JsonSchema>, required: true },
     uiSchema: { type: Object as PropType<UISchema>, default: undefined },
   },
