@@ -15,6 +15,8 @@ export default defineComponent({
       let extraAttrs: Record<string, any> = {};
       if (props.jsonSchema.type === 'integer' || props.jsonSchema.type === 'number') {
         extraAttrs = {
+          min: props.jsonSchema.minimum,
+          max: props.jsonSchema.maximum,
           step: props.jsonSchema.multipleOf ?? (props.jsonSchema.type === 'number' ? 'any' : 1),
         };
       };

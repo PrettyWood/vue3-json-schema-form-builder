@@ -21,6 +21,14 @@ const EXAMPLES: Example[] = [
       type: 'number',
     },
   },
+  {
+    title: 'Number field - basic integer with min and max',
+    jsonSchema: {
+      type: 'integer',
+      minimum: 3,
+      maximum: 7,
+    },
+  },
   // string field
   {
     title: 'String field - basic',
