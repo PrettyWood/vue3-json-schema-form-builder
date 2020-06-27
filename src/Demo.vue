@@ -19,7 +19,8 @@ export default defineComponent({
       selectedIndex.value = index;
       formData.value = selectedExample.value.formData;
     }
-    return { formData, selectedIndex, exampleTitles, selectedExample, selectExample };
+    const liveValidation = ref(false);
+    return { formData, exampleTitles, selectedExample, selectExample, liveValidation };
   },
 });
 </script>
@@ -35,8 +36,11 @@ export default defineComponent({
         :jsonSchema="selectedExample.jsonSchema"
         :uiSchema="selectedExample.uiSchema"
         v-model:formData="formData"
+        :liveValidation="liveValidation"
       />
       <div class="column2">
+        <h3>Live Validation</h3>
+        <input type="checkbox" v-model="liveValidation" />
         <h3>Form data</h3>
         <pre>{{ JSON.stringify(formData, null, 2) }}</pre>
         <!-- JSON schema -->

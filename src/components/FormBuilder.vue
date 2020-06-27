@@ -1,6 +1,6 @@
 <script lang="ts">
 import Ajv from 'ajv';
-import { defineComponent, PropType, ref, watch } from 'vue';
+import { defineComponent, PropType, ref, watch, watchEffect } from 'vue';
 
 import { JsonSchema, UISchema } from '/@/types';
 import StringField from './fields/StringField.vue';
@@ -35,6 +35,7 @@ export default defineComponent({
     formData: { type: String, default: undefined },
     jsonSchema: { type: Object as PropType<JsonSchema>, required: true },
     uiSchema: { type: Object as PropType<UISchema>, default: undefined },
+    liveValidation: { type: Boolean, default: false },
   },
   setup(props) {
     const errors = ref<string[]>([]);
@@ -47,6 +48,9 @@ export default defineComponent({
     function validate() {
       errors.value = validateFormData(props.formData, props.jsonSchema);
     }
+    watchEffect(() => {
+      if (props.liveValidation) validate();
+    });
     return { errors, validate };
   }
 });
