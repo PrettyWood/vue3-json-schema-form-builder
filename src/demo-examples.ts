@@ -22,6 +22,14 @@ const EXAMPLES: Example[] = [
       title: 'the title',
       description: 'the description'
     },
+  },
+  {
+    title: 'String-field - with constraints',
+    jsonSchema: {
+      type: 'string',
+      minLength: 2,
+      maxLength: 3
+    }
   }
 ];
 
