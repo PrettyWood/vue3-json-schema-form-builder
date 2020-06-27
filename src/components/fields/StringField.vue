@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 
-import { JsonSchema, UISchema } from '/@/types';
+import { JsonSchema, UISchema, StringFieldProps } from '/@/types';
 
 export default defineComponent({
   name: 'StringField',
@@ -10,7 +10,7 @@ export default defineComponent({
     jsonSchema: { type: Object as PropType<JsonSchema>, required: true },
     uiSchema: { type: Object as PropType<UISchema>, default: undefined },
   },
-  setup(_, { emit }) {
+  setup(props: StringFieldProps, { emit }) {
     function onUpdate(value: string) {
       const newValue = value === '' ? undefined : value;
       emit('update:formData', newValue);
