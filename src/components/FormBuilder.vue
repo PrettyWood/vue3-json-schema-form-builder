@@ -3,7 +3,7 @@ import Ajv from 'ajv';
 import { defineComponent, PropType, ref, watch, watchEffect } from 'vue';
 
 import { JsonSchema, UISchema } from '/@/types';
-import StringField from './fields/StringField.vue';
+import BaseField from './fields/BaseField.vue';
 
 function validateFormData(formData: any, jsonSchema: JsonSchema): string[] {
   const ajv = new Ajv({
@@ -30,7 +30,7 @@ function validateFormData(formData: any, jsonSchema: JsonSchema): string[] {
 
 export default defineComponent({
   name: 'FormBuilder',
-  components: { StringField },
+  components: { BaseField },
   props: {
     formData: { type: String, default: undefined },
     jsonSchema: { type: Object as PropType<JsonSchema>, required: true },
@@ -61,7 +61,7 @@ export default defineComponent({
     <ul class="errors">
       <li v-for="(error, index) in errors" :key="index" v-text="error" />
     </ul>
-    <StringField
+    <BaseField
       :formData="formData"
       :jsonSchema="jsonSchema"
       :uiSchema="uiSchema"
