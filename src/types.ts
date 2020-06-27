@@ -9,3 +9,5 @@ export interface FieldProps<T = any> {
   jsonSchema: JsonSchema;
   uiSchema: UISchema;
 }
+
+export type Widget = 'number' | 'text';

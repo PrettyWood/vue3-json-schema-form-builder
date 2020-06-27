@@ -83,6 +83,7 @@ button[type='submit'] {
 .errors {
   color: red;
 }
+
 input[type='text'],
 input[type='number'],
 input[type='password'],
@@ -92,7 +93,7 @@ input[type='color'],
 select,
 textarea,
 button {
-  width: 100%;
+  width: 90%;
   padding: 5px 10px;
   font-size: 14px;
   line-height: 1.4;
