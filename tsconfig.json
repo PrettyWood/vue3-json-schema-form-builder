@@ -12,10 +12,12 @@
     "esModuleInterop": true,
     "downlevelIteration": true,
     "resolveJsonModule": true,
-    "isolatedModules": true
-  },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.vue"
-  ]
+    "isolatedModules": true,
+    "baseUrl": ".",
+    "paths": {
+      "/@/*": [
+        "src/*"
+      ],
+    },
+  }
 }
