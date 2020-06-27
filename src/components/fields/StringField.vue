@@ -1,10 +1,12 @@
 <script lang="ts">
 import { defineComponent, PropType, computed } from 'vue';
 
+import BaseWidget from '../widgets/BaseWidget.vue';
 import { JsonSchema, UISchema, FieldProps } from '/@/types';
 
 export default defineComponent({
   name: 'StringField',
+  components: { BaseWidget },
   props: {
     formData: { type: String, default: undefined },
     jsonSchema: { type: Object as PropType<JsonSchema>, required: true },
@@ -29,9 +31,11 @@ export default defineComponent({
   <div class="string-field">
     <label class="title" v-if="title" v-text="title" />
     <p class="description" v-if="description" v-text="description" />
-    <input
-      :value="formData"
-      @input="onUpdate($event.target.value)"
+    <BaseWidget
+      :modelValue="formData"
+      :jsonSchema="jsonSchema"
+      :uiSchema="uiSchema"
+      @update:modelValue="onUpdate"
     />
   </div>
 </template>
