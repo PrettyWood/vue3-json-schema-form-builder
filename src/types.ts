@@ -10,7 +10,7 @@ export interface FieldProps<T = any> {
   uiSchema: UISchema;
 }
 
-export type Widget = 'number' | 'text';
+export type Widget = 'updown' | 'text';
 
 export interface UISchemaBase {
   'ui:widget'?: Widget;

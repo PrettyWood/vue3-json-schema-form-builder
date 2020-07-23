@@ -3,11 +3,11 @@ import { computed, defineComponent, Component, PropType } from 'vue';
 
 import { JsonSchema, UISchema, Widget } from '/@/types';
 
-import NumberWidget from './NumberWidget.vue';
 import TextWidget from './TextWidget.vue';
+import UpDownWidget from './UpDownWidget.vue';
 
 const WIDGET_MAPPING: Record<Widget, Component> = {
-  number: NumberWidget,
+  updown: UpDownWidget,
   text: TextWidget,
 };
 
@@ -15,9 +15,9 @@ const WIDGET_MAPPING: Record<Widget, Component> = {
 function getWidgetName(jsonSchema: JsonSchema): Widget {
   switch (jsonSchema.type) {
     case 'integer':
-      return 'number';
+      return 'updown';
     case 'number':
-      return 'number';
+      return 'updown';
     case 'string':
       return 'text';
     default:

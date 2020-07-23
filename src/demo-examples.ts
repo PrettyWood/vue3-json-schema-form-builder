@@ -99,7 +99,7 @@ const EXAMPLES: Example[] = [
         // "ui:autocomplete": "given-name"
       },
       age: {
-        // 'ui:widget': 'updown',
+        'ui:widget': 'updown',
         'ui:title': 'Age of person',
         'ui:description': '(earthian year)',
       },
