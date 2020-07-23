@@ -2,7 +2,7 @@ import { JSONSchema7, JSONSchema7TypeName } from 'json-schema';
 
 export type JsonSchema = JSONSchema7;
 export type JsonSchemaType = JSONSchema7TypeName;
-export type UISchema = Record<string, any>;
+export type UISchema = UISchemaBase | Record<string, UISchemaBase>;
 
 export interface FieldProps<T = any> {
   formData: T;
@@ -11,3 +11,9 @@ export interface FieldProps<T = any> {
 }
 
 export type Widget = 'number' | 'text';
+
+export interface UISchemaBase {
+  'ui:widget'?: Widget;
+  'ui:title'?: string;
+  'ui:description'?: string;
+}
