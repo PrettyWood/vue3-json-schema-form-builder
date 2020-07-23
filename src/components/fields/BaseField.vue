@@ -2,7 +2,7 @@
 /**
  * Main field component, which is basically the registry
  */
-import { computed, defineComponent, defineAsyncComponent, Component, PropType } from 'vue';
+import { computed, defineComponent, defineAsyncComponent, onMounted, Component, PropType } from 'vue';
 
 import NumberField from './NumberField.vue';
 import StringField from './StringField.vue';
@@ -25,7 +25,12 @@ export default defineComponent({
     jsonSchema: { type: Object as PropType<JsonSchema>, required: true },
     uiSchema: { type: Object as PropType<UISchema>, default: undefined },
   },
-  setup(props) {
+  setup(props, { emit }) {
+    onMounted(() => {
+      if (props.formData === undefined && props.jsonSchema.default !== undefined) {
+        emit('update:formData', props.jsonSchema.default);
+      }
+    });
     return {
       field: computed((): Component | undefined => {
         // we can have an array in JSON Schema (e.g. "type": ["number", "string"])
