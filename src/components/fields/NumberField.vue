@@ -1,7 +1,7 @@
 <script lang="ts">
-import { defineComponent, PropType, computed } from 'vue';
+import { defineComponent, PropType } from 'vue';
 
-import { useTitle } from './hooks';
+import { useDescription, useTitle } from './hooks';
 import BaseWidget from '../widgets/BaseWidget.vue';
 import { JsonSchema, UISchema, FieldProps } from '/@/types';
 
@@ -21,7 +21,7 @@ export default defineComponent({
     }
     return {
       title: useTitle(props),
-      description: computed(() => props.jsonSchema.description),
+      description: useDescription(props),
       onUpdate,
     };
   },
