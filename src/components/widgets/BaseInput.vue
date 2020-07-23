@@ -14,7 +14,8 @@ export default defineComponent({
   setup(props, { attrs }) {
     const inputAttrs = computed<Record<string, any>>(() => {
       const commonAttrs: Record<string, any> = {
-        autofocus: props.uiSchema['ui:autofocus'] ?? false
+        autofocus: props.uiSchema['ui:autofocus'] ?? false,
+        autocomplete: props.uiSchema['ui:autocomplete'] ?? 'off',
       }
       let extraAttrs: Record<string, any> = {};
       if (props.jsonSchema.type === 'integer' || props.jsonSchema.type === 'number') {

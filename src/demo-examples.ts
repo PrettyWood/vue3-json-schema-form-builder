@@ -93,10 +93,10 @@ const EXAMPLES: Example[] = [
     uiSchema: {
       firstName: {
         "ui:autofocus": true,
-        // "ui:autocomplete": "family-name"
+        "ui:autocomplete": "family-name"
       },
       lastName: {
-        // "ui:autocomplete": "given-name"
+        "ui:autocomplete": "given-name"
       },
       age: {
         'ui:widget': 'updown',
