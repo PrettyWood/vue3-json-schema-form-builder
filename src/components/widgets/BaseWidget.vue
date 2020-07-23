@@ -1,7 +1,7 @@
 <script lang="ts">
 import { computed, defineComponent, Component, PropType } from 'vue';
 
-import { JsonSchema, UISchema, Widget } from '/@/types';
+import { JsonSchema, UISchemaBase, Widget } from '/@/types';
 
 import TextWidget from './TextWidget.vue';
 import UpDownWidget from './UpDownWidget.vue';
@@ -11,8 +11,10 @@ const WIDGET_MAPPING: Record<Widget, Component> = {
   text: TextWidget,
 };
 
-
-function getWidgetName(jsonSchema: JsonSchema): Widget {
+function getWidgetName(jsonSchema: JsonSchema, uiSchema: UISchemaBase | undefined): Widget {
+  if (uiSchema?.['ui:widget']) {
+    return uiSchema['ui:widget'];
+  }
   switch (jsonSchema.type) {
     case 'integer':
       return 'updown';
