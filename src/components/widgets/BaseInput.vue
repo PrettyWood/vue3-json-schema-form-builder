@@ -1,7 +1,7 @@
 <script lang="ts">
 import { computed, defineComponent, mergeProps, PropType } from 'vue';
 
-import { JsonSchema } from '/@/types';
+import { JsonSchema, UISchema } from '/@/types';
 
 export default defineComponent({
   name: 'BaseInput',
@@ -9,9 +9,13 @@ export default defineComponent({
   props: {
     modelValue: { type: [String, Number], default: undefined },
     jsonSchema: { type: Object as PropType<JsonSchema>, required: true },
+    uiSchema: { type: Object as PropType<UISchema<string | number>>, default: undefined },
   },
   setup(props, { attrs }) {
     const inputAttrs = computed<Record<string, any>>(() => {
+      const commonAttrs: Record<string, any> = {
+        autofocus: props.uiSchema['ui:autofocus'] ?? false
+      }
       let extraAttrs: Record<string, any> = {};
       if (props.jsonSchema.type === 'integer' || props.jsonSchema.type === 'number') {
         extraAttrs = {
@@ -25,7 +29,7 @@ export default defineComponent({
           maxlength: props.jsonSchema.maxLength,
         }
       };
-      return mergeProps(extraAttrs, attrs);
+      return mergeProps(commonAttrs, extraAttrs, attrs);
     })
     return { inputAttrs };
   }

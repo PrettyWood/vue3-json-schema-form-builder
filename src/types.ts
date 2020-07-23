@@ -16,4 +16,5 @@ export interface UISchemaBase {
   'ui:widget'?: Widget;
   'ui:title'?: string;
   'ui:description'?: string;
+  'ui:autofocus'?: boolean;
 }

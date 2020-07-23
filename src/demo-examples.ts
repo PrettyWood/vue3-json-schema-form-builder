@@ -92,7 +92,7 @@ const EXAMPLES: Example[] = [
     },
     uiSchema: {
       firstName: {
-        // "ui:autofocus": true,
+        "ui:autofocus": true,
         // "ui:autocomplete": "family-name"
       },
       lastName: {
