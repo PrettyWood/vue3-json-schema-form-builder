@@ -107,7 +107,7 @@ const EXAMPLES: Example[] = [
         'ui:widget': 'textarea',
       },
       password: {
-        // 'ui:widget': 'password',
+        'ui:widget': 'password',
       },
     },
     formData: {

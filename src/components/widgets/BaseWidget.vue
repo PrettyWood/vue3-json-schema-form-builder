@@ -3,11 +3,13 @@ import { computed, defineComponent, Component, PropType } from 'vue';
 
 import { JsonSchema, UISchemaBase, Widget } from '/@/types';
 
+import PasswordWidget from './PasswordWidget.vue';
 import TextWidget from './TextWidget.vue';
 import TextareaWidget from './TextareaWidget.vue';
 import UpDownWidget from './UpDownWidget.vue';
 
 const WIDGET_MAPPING: Record<Widget, Component> = {
+  password: PasswordWidget,
   text: TextWidget,
   textarea: TextareaWidget,
   updown: UpDownWidget,
