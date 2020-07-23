@@ -1,6 +1,7 @@
 <script lang="ts">
 import { defineComponent, PropType, computed } from 'vue';
 
+import { useTitle } from './hooks';
 import BaseWidget from '../widgets/BaseWidget.vue';
 import { JsonSchema, UISchema, FieldProps } from '/@/types';
 
@@ -19,7 +20,7 @@ export default defineComponent({
       console.debug('StringField: emit', newValue);
     }
     return {
-      title: computed(() => props.jsonSchema.title),
+      title: useTitle(props),
       description: computed(() => props.jsonSchema.description),
       onUpdate,
     };

@@ -1,6 +1,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 
+import { useTitle } from './hooks';
 import BaseField from './BaseField.vue';
 import { JsonSchema, UISchema, FieldProps } from '/@/types';
 
@@ -23,6 +24,7 @@ export default defineComponent({
     }
     return {
       onUpdate,
+      title: useTitle(props),
     };
   },
 });
@@ -31,7 +33,7 @@ export default defineComponent({
 <template>
   <div class="object-field">
     <fieldset>
-      <legend v-if="jsonSchema.title" class="title" v-text="jsonSchema.title" />
+      <legend v-if="title" class="title" v-text="title" />
       <p v-if="jsonSchema.description" class="description" v-text="jsonSchema.description" />
       <BaseField
         v-for="(fieldJsonSchema, fieldName) in jsonSchema.properties"

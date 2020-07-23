@@ -11,8 +11,7 @@ export default defineComponent({
   name: 'Demo',
   components: { FormBuilder },
   setup() {
-    let formData = ref<any>(undefined);
-    let selectedIndex= ref(0);
+    let selectedIndex= ref(EXAMPLES.length - 1);
     const exampleTitles = EXAMPLES.map((e) => e.title);
     const selectedExample = computed(() => EXAMPLES[selectedIndex.value]);
     function selectExample(index: number) {
@@ -20,6 +19,7 @@ export default defineComponent({
       formData.value = selectedExample.value.formData;
     }
     const liveValidation = ref(false);
+    let formData = ref<any>(selectedExample.value.formData);
     return { formData, exampleTitles, selectedExample, selectExample, liveValidation };
   },
 });
