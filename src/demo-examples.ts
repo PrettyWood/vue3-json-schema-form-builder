@@ -104,7 +104,7 @@ const EXAMPLES: Example[] = [
         'ui:description': '(earthian year)',
       },
       bio: {
-        // 'ui:widget': 'textarea',
+        'ui:widget': 'textarea',
       },
       password: {
         // 'ui:widget': 'password',

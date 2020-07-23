@@ -4,11 +4,13 @@ import { computed, defineComponent, Component, PropType } from 'vue';
 import { JsonSchema, UISchemaBase, Widget } from '/@/types';
 
 import TextWidget from './TextWidget.vue';
+import TextareaWidget from './TextareaWidget.vue';
 import UpDownWidget from './UpDownWidget.vue';
 
 const WIDGET_MAPPING: Record<Widget, Component> = {
-  updown: UpDownWidget,
   text: TextWidget,
+  textarea: TextareaWidget,
+  updown: UpDownWidget,
 };
 
 function getWidgetName(jsonSchema: JsonSchema, uiSchema: UISchemaBase | undefined): Widget {
@@ -32,11 +34,11 @@ export default defineComponent({
   props: {
     modelValue: { type: [String, Number], default: undefined },
     jsonSchema: { type: Object as PropType<JsonSchema>, required: true },
-    uiSchema: { type: Object as PropType<UISchema>, default: undefined },
+    uiSchema: { type: Object as PropType<UISchemaBase>, default: undefined },
   },
   setup(props) {
     return {
-      widget: computed(() => WIDGET_MAPPING[getWidgetName(props.jsonSchema)])
+      widget: computed(() => WIDGET_MAPPING[getWidgetName(props.jsonSchema, props.uiSchema)])
     }
   }
 });
