@@ -32,7 +32,7 @@ export default defineComponent({
   name: 'FormBuilder',
   components: { BaseField },
   props: {
-    formData: { type: String, default: undefined },
+    formData: { type: [Object, String, Number], default: undefined },
     jsonSchema: { type: Object as PropType<JsonSchema>, required: true },
     uiSchema: { type: Object as PropType<UISchema>, default: undefined },
     liveValidation: { type: Boolean, default: false },

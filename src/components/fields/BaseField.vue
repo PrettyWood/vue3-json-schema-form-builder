@@ -2,7 +2,7 @@
 /**
  * Main field component, which is basically the registry
  */
-import { computed, defineComponent, Component, PropType } from 'vue';
+import { computed, defineComponent, defineAsyncComponent, Component, PropType } from 'vue';
 
 import NumberField from './NumberField.vue';
 import StringField from './StringField.vue';
@@ -15,13 +15,13 @@ const FIELD_MAPPING: Record<JsonSchemaType, Component | undefined> = {
   null: undefined,
   number: NumberField,
   string: StringField,
-  object: undefined,
+  object: defineAsyncComponent(() => import('./ObjectField.vue')),  // avoid circular dependency
 };
 
 export default defineComponent({
   name: 'BaseField',
   props: {
-    formData: { type: [String, Number], default: undefined },
+    formData: { type: [Object, String, Number], default: undefined },
     jsonSchema: { type: Object as PropType<JsonSchema>, required: true },
     uiSchema: { type: Object as PropType<UISchema>, default: undefined },
   },
@@ -40,5 +40,5 @@ export default defineComponent({
 </script>
 
 <template>
-  <component :is="field" v-bind="$props" />
+  <component class="field" :is="field" v-bind="$props" />
 </template>
