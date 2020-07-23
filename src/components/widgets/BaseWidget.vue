@@ -1,7 +1,7 @@
 <script lang="ts">
 import { computed, defineComponent, Component, PropType } from 'vue';
 
-import { JsonSchema, UISchemaBase, Widget } from '/@/types';
+import { JsonSchema, UISchema, Widget } from '/@/types';
 
 import PasswordWidget from './PasswordWidget.vue';
 import TextWidget from './TextWidget.vue';
@@ -15,7 +15,7 @@ const WIDGET_MAPPING: Record<Widget, Component> = {
   updown: UpDownWidget,
 };
 
-function getWidgetName(jsonSchema: JsonSchema, uiSchema: UISchemaBase | undefined): Widget {
+function getWidgetName(jsonSchema: JsonSchema, uiSchema: UISchema<string | number> | undefined): Widget {
   if (uiSchema?.['ui:widget']) {
     return uiSchema['ui:widget'];
   }
@@ -36,7 +36,7 @@ export default defineComponent({
   props: {
     modelValue: { type: [String, Number], default: undefined },
     jsonSchema: { type: Object as PropType<JsonSchema>, required: true },
-    uiSchema: { type: Object as PropType<UISchemaBase>, default: undefined },
+    uiSchema: { type: Object as PropType<UISchema<string | number>>, default: undefined },
   },
   setup(props) {
     return {
