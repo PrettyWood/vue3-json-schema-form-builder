@@ -1,13 +1,14 @@
 <script lang="ts">
 import { computed, defineComponent, ComponentPublicInstance, PropType } from 'vue';
 
-import { JsonSchema, UISchema, Widget } from '/@/types';
+import { JsonSchema, UISchema, Widget, WidgetProps } from '/@/types';
 
 import ColorWidget from './ColorWidget.vue';
 import DateWidget from './DateWidget.vue';
 import EmailWidget from './EmailWidget.vue';
 import PasswordWidget from './PasswordWidget.vue';
 import RangeWidget from './RangeWidget.vue';
+import SelectWidget from './SelectWidget.vue';
 import TextWidget from './TextWidget.vue';
 import TextareaWidget from './TextareaWidget.vue';
 import UpDownWidget from './UpDownWidget.vue';
@@ -19,6 +20,7 @@ const WIDGET_MAPPING: Record<Widget, ComponentPublicInstance<any>> = {
   email: EmailWidget,
   password: PasswordWidget,
   range: RangeWidget,
+  select: SelectWidget,
   text: TextWidget,
   textarea: TextareaWidget,
   updown: UpDownWidget,
@@ -28,6 +30,9 @@ const WIDGET_MAPPING: Record<Widget, ComponentPublicInstance<any>> = {
 function getWidgetName(jsonSchema: JsonSchema, uiSchema: UISchema<string | number> | undefined): Widget {
   if (uiSchema?.['ui:widget']) {
     return uiSchema['ui:widget'];
+  }
+  if (jsonSchema.enum) {
+    return 'select';
   }
   switch (jsonSchema.type) {
     case 'integer':
@@ -48,7 +53,7 @@ export default defineComponent({
     jsonSchema: { type: Object as PropType<JsonSchema>, required: true },
     uiSchema: { type: Object as PropType<UISchema<string | number>>, required: true },
   },
-  setup(props) {
+  setup(props: WidgetProps<string | number>) {
     return {
       widget: computed(() => WIDGET_MAPPING[getWidgetName(props.jsonSchema, props.uiSchema)])
     }

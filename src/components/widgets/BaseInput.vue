@@ -1,7 +1,7 @@
 <script lang="ts">
 import { computed, defineComponent, mergeProps, PropType } from 'vue';
 
-import { JsonSchema, UISchema } from '/@/types';
+import { JsonSchema, UISchema, WidgetProps } from '/@/types';
 
 export default defineComponent({
   name: 'BaseInput',
@@ -11,7 +11,7 @@ export default defineComponent({
     jsonSchema: { type: Object as PropType<JsonSchema>, required: true },
     uiSchema: { type: Object as PropType<UISchema<string | number>>, required: true },
   },
-  setup(props, { attrs }) {
+  setup(props: WidgetProps<string | number>, { attrs }) {
     const inputAttrs = computed<Record<string, any>>(() => {
       const commonAttrs: Record<string, any> = {
         autofocus: props.uiSchema['ui:autofocus'] ?? false,

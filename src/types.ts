@@ -11,12 +11,19 @@ export interface FieldProps<T = any> {
   fieldName: string;
 }
 
+export interface WidgetProps<T = any> {
+  modelValue: T;
+  jsonSchema: JsonSchema;
+  uiSchema: UISchema<T>;
+}
+
 export type Widget =
   | 'color'
   | 'date'
   | 'email'
   | 'password'
   | 'range'
+  | 'select'
   | 'text'
   | 'textarea'
   | 'updown'
