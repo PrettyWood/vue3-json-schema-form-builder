@@ -60,7 +60,6 @@ export default defineComponent({
       :jsonSchema="jsonSchema"
       :uiSchema="uiSchema"
       fieldName="__root__"
-      required
       @update:formData="$emit('update:formData', $event)"
     />
     <button type="submit">Submit</button>
