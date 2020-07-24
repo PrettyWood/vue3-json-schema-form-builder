@@ -149,7 +149,7 @@ const EXAMPLES: Example[] = [
     jsonSchema: {
       type: 'object',
       title: 'Number fields',
-      required: ['requiredNumberEnum'],
+      required: ['requiredNumberEnum', 'requiredNumberEnumRadio'],
       properties: {
         number: {
           title: 'Number',
@@ -174,6 +174,11 @@ const EXAMPLES: Example[] = [
           title: 'Number enum radio',
           enum: [1, 2, 3],
         },
+        requiredNumberEnumRadio: {
+          type: 'number',
+          title: 'Required number enum radio',
+          enum: [1, 2, 3],
+        },
         integerRange: {
           title: 'Integer range',
           type: 'integer',
@@ -194,10 +199,10 @@ const EXAMPLES: Example[] = [
         'ui:widget': 'updown',
       },
       numberEnumRadio: {
-        // 'ui:widget': 'radio',
-        // 'ui:options': {
-        //   inline: true,
-        // },
+        'ui:widget': 'radio',
+      },
+      requiredNumberEnumRadio: {
+        'ui:widget': 'radio',
       },
       integerRange: {
         'ui:widget': 'range',

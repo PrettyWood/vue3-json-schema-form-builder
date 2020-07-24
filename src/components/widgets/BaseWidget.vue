@@ -7,6 +7,7 @@ import ColorWidget from './ColorWidget.vue';
 import DateWidget from './DateWidget.vue';
 import EmailWidget from './EmailWidget.vue';
 import PasswordWidget from './PasswordWidget.vue';
+import RadioWidget from './RadioWidget.vue';
 import RangeWidget from './RangeWidget.vue';
 import SelectWidget from './SelectWidget.vue';
 import TextWidget from './TextWidget.vue';
@@ -19,6 +20,7 @@ const WIDGET_MAPPING: Record<Widget, ComponentPublicInstance<any>> = {
   date: DateWidget,
   email: EmailWidget,
   password: PasswordWidget,
+  radio: RadioWidget,
   range: RangeWidget,
   select: SelectWidget,
   text: TextWidget,

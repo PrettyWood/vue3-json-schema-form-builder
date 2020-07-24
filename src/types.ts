@@ -24,6 +24,7 @@ export type Widget =
   | 'date'
   | 'email'
   | 'password'
+  | 'radio'
   | 'range'
   | 'select'
   | 'text'

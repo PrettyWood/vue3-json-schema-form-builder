@@ -4,7 +4,7 @@ import { defineComponent } from 'vue';
 import BaseInput from './BaseInput.vue';
 
 export default defineComponent({
-  name: 'ColorWidget',
+  name: 'DateWidget',
   components: { BaseInput },
 });
 </script>

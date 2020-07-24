@@ -4,7 +4,7 @@ import { defineComponent } from 'vue';
 import BaseInput from './BaseInput.vue';
 
 export default defineComponent({
-  name: 'UpDownWidget',
+  name: 'RangeWidget',
   components: { BaseInput },
   inheritAttrs: false,
   props: {
