@@ -3,6 +3,7 @@ import { computed, defineComponent, ComponentPublicInstance, PropType } from 'vu
 
 import { JsonSchema, UISchema, Widget } from '/@/types';
 
+import ColorWidget from './ColorWidget.vue';
 import EmailWidget from './EmailWidget.vue';
 import PasswordWidget from './PasswordWidget.vue';
 import TextWidget from './TextWidget.vue';
@@ -11,6 +12,7 @@ import UpDownWidget from './UpDownWidget.vue';
 import UrlWidget from './UrlWidget.vue';
 
 const WIDGET_MAPPING: Record<Widget, ComponentPublicInstance<any>> = {
+  color: ColorWidget,
   email: EmailWidget,
   password: PasswordWidget,
   text: TextWidget,

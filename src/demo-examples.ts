@@ -94,6 +94,11 @@ const EXAMPLES: Example[] = [
         website: {
           type: 'string',
         },
+        favoriteColor: {
+          type: 'string',
+          default: '#e1eae2',
+          title: 'Favorite color',
+        }
       },
     },
     uiSchema: {
@@ -120,7 +125,10 @@ const EXAMPLES: Example[] = [
       },
       website: {
         'ui:widget': 'url',
-      }
+      },
+      favoriteColor: {
+        'ui:widget': 'color',
+      },
     },
     formData: {
       "lastName": "Norris",

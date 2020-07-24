@@ -12,6 +12,7 @@ export interface FieldProps<T = any> {
 }
 
 export type Widget =
+  | 'color'
   | 'email'
   | 'password'
   | 'text'
