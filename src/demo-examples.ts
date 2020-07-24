@@ -88,6 +88,10 @@ const EXAMPLES: Example[] = [
           title: 'Telephone',
           minLength: 10,
         },
+        email: {
+          type: 'string',
+          title: 'Email'
+        }
       },
     },
     uiSchema: {
@@ -108,6 +112,9 @@ const EXAMPLES: Example[] = [
       },
       password: {
         'ui:widget': 'password',
+      },
+      email: {
+        'ui:widget': 'email',
       },
     },
     formData: {

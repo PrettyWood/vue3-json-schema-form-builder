@@ -10,7 +10,12 @@ export interface FieldProps<T = any> {
   uiSchema: UISchema<T>;
 }
 
-export type Widget = 'password' | 'text' | 'textarea' | 'updown';
+export type Widget =
+  | 'email'
+  | 'password'
+  | 'text'
+  | 'textarea'
+  | 'updown';
 
 export interface UISchemaBase {
   'ui:widget'?: Widget;

@@ -3,12 +3,14 @@ import { computed, defineComponent, ComponentPublicInstance, PropType } from 'vu
 
 import { JsonSchema, UISchema, Widget } from '/@/types';
 
+import EmailWidget from './EmailWidget.vue';
 import PasswordWidget from './PasswordWidget.vue';
 import TextWidget from './TextWidget.vue';
 import TextareaWidget from './TextareaWidget.vue';
 import UpDownWidget from './UpDownWidget.vue';
 
 const WIDGET_MAPPING: Record<Widget, ComponentPublicInstance<any>> = {
+  email: EmailWidget,
   password: PasswordWidget,
   text: TextWidget,
   textarea: TextareaWidget,
