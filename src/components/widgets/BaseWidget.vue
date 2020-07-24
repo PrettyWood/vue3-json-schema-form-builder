@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent, Component, PropType } from 'vue';
+import { computed, defineComponent, ComponentPublicInstance, PropType } from 'vue';
 
 import { JsonSchema, UISchema, Widget } from '/@/types';
 
@@ -8,7 +8,7 @@ import TextWidget from './TextWidget.vue';
 import TextareaWidget from './TextareaWidget.vue';
 import UpDownWidget from './UpDownWidget.vue';
 
-const WIDGET_MAPPING: Record<Widget, Component> = {
+const WIDGET_MAPPING: Record<Widget, ComponentPublicInstance<any>> = {
   password: PasswordWidget,
   text: TextWidget,
   textarea: TextareaWidget,
@@ -36,7 +36,7 @@ export default defineComponent({
   props: {
     modelValue: { type: [String, Number], default: undefined },
     jsonSchema: { type: Object as PropType<JsonSchema>, required: true },
-    uiSchema: { type: Object as PropType<UISchema<string | number>>, default: undefined },
+    uiSchema: { type: Object as PropType<UISchema<string | number>>, required: true },
   },
   setup(props) {
     return {

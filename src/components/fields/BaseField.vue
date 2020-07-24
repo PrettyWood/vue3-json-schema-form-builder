@@ -2,13 +2,13 @@
 /**
  * Main field component, which is basically the registry
  */
-import { computed, defineComponent, defineAsyncComponent, onMounted, Component, PropType } from 'vue';
+import { computed, defineAsyncComponent, defineComponent, onMounted, ComponentPublicInstance, PropType } from 'vue';
 
 import NumberField from './NumberField.vue';
 import StringField from './StringField.vue';
 import { JsonSchema, JsonSchemaType, UISchema } from '/@/types';
 
-const FIELD_MAPPING: Record<JsonSchemaType, Component | undefined> = {
+const FIELD_MAPPING: Record<JsonSchemaType, ComponentPublicInstance<any> | undefined> = {
   array: undefined,
   boolean: undefined,
   integer: NumberField,
@@ -23,7 +23,7 @@ export default defineComponent({
   props: {
     formData: { type: [Object, String, Number], default: undefined },
     jsonSchema: { type: Object as PropType<JsonSchema>, required: true },
-    uiSchema: { type: Object as PropType<UISchema>, default: undefined },
+    uiSchema: { type: Object as PropType<UISchema>, default: (): UISchema => ({}) },
   },
   setup(props, { emit }) {
     onMounted(() => {
@@ -32,7 +32,7 @@ export default defineComponent({
       }
     });
     return {
-      field: computed((): Component | undefined => {
+      field: computed((): ComponentPublicInstance | undefined => {
         // we can have an array in JSON Schema (e.g. "type": ["number", "string"])
         const jsonSchemaType = Array.isArray(props.jsonSchema.type)
           ? props.jsonSchema.type[0]

@@ -9,7 +9,7 @@ export default defineComponent({
   props: {
     modelValue: { type: [String, Number], default: undefined },
     jsonSchema: { type: Object as PropType<JsonSchema>, required: true },
-    uiSchema: { type: Object as PropType<UISchema<string | number>>, default: undefined },
+    uiSchema: { type: Object as PropType<UISchema<string | number>>, required: true },
   },
   setup(props, { attrs }) {
     const inputAttrs = computed<Record<string, any>>(() => {
