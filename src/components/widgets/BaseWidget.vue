@@ -29,13 +29,29 @@ const WIDGET_MAPPING: Record<Widget, ComponentPublicInstance<any>> = {
   url: UrlWidget,
 };
 
+const JSON_SCHEMA_FORMAT_WIDGET_MAPPING: Record<string, Widget> = {
+  'date': 'date',
+  'email': 'email',
+  'idn-email': 'email',
+  'uri': 'url',
+  'uri-reference': 'url',
+}
+
 function getWidgetName(jsonSchema: JsonSchema, uiSchema: UISchema<string | number> | undefined): Widget {
+  // priority to the explicit widget set by the user
   if (uiSchema?.['ui:widget']) {
     return uiSchema['ui:widget'];
   }
+
+  // default widget based on JSON schema
+  // https://json-schema.org/understanding-json-schema/reference/string.html?highlight=email#built-in-formats
   if (jsonSchema.enum) {
     return 'select';
+  } else if (jsonSchema.format && jsonSchema.format in JSON_SCHEMA_FORMAT_WIDGET_MAPPING) {
+    return JSON_SCHEMA_FORMAT_WIDGET_MAPPING[jsonSchema.format]
   }
+
+  // fallback
   switch (jsonSchema.type) {
     case 'integer':
       return 'updown';
