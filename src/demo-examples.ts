@@ -74,6 +74,10 @@ const EXAMPLES: Example[] = [
           type: 'integer',
           title: 'Age',
         },
+        birthDate: {
+          type: 'string',
+          title: 'Date of birth',
+        },
         bio: {
           type: 'string',
           title: 'Bio',
@@ -113,6 +117,9 @@ const EXAMPLES: Example[] = [
         'ui:widget': 'updown',
         'ui:title': 'Age of person',
         'ui:description': '(earthian year)',
+      },
+      birthDate: {
+        'ui:widget': 'date',
       },
       bio: {
         'ui:widget': 'textarea',

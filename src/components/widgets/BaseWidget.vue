@@ -4,6 +4,7 @@ import { computed, defineComponent, ComponentPublicInstance, PropType } from 'vu
 import { JsonSchema, UISchema, Widget } from '/@/types';
 
 import ColorWidget from './ColorWidget.vue';
+import DateWidget from './DateWidget.vue';
 import EmailWidget from './EmailWidget.vue';
 import PasswordWidget from './PasswordWidget.vue';
 import TextWidget from './TextWidget.vue';
@@ -13,6 +14,7 @@ import UrlWidget from './UrlWidget.vue';
 
 const WIDGET_MAPPING: Record<Widget, ComponentPublicInstance<any>> = {
   color: ColorWidget,
+  date: DateWidget,
   email: EmailWidget,
   password: PasswordWidget,
   text: TextWidget,
