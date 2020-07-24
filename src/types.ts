@@ -16,6 +16,7 @@ export type Widget =
   | 'date'
   | 'email'
   | 'password'
+  | 'range'
   | 'text'
   | 'textarea'
   | 'updown'

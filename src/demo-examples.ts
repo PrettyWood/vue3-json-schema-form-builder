@@ -194,10 +194,10 @@ const EXAMPLES: Example[] = [
         // },
       },
       integerRange: {
-        // 'ui:widget': 'range',
+        'ui:widget': 'range',
       },
       integerRangeSteps: {
-        // 'ui:widget': 'range',
+        'ui:widget': 'range',
       },
     },
     formData: {
