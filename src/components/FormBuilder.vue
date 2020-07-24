@@ -1,6 +1,6 @@
 <script lang="ts">
 import Ajv from 'ajv';
-import { defineComponent, PropType, ref, watch, watchEffect } from 'vue';
+import { defineComponent, PropType, ref, watchEffect } from 'vue';
 
 import { JsonSchema, UISchema } from '/@/types';
 import BaseField from './fields/BaseField.vue';
@@ -39,12 +39,6 @@ export default defineComponent({
   },
   setup(props) {
     const errors = ref<string[]>([]);
-    // Reset error message on form change (should probably be moved)
-    watch(
-      () => props.jsonSchema,
-      () => (errors.value = []),
-      { immediate: true },
-    );
     function validate() {
       errors.value = validateFormData(props.formData, props.jsonSchema);
     }

@@ -11,11 +11,11 @@ export default defineComponent({
   name: 'Demo',
   components: { FormBuilder },
   setup() {
-    let selectedIndex= ref(EXAMPLES.length - 1);
+    let selectedTitle= ref('Object field - Simple');
     const exampleTitles = EXAMPLES.map((e) => e.title);
-    const selectedExample = computed(() => EXAMPLES[selectedIndex.value]);
-    function selectExample(index: number) {
-      selectedIndex.value = index;
+    const selectedExample = computed(() => EXAMPLES.find((e) => e.title === selectedTitle.value) ?? EXAMPLES[0]);
+    function selectExample(title: string) {
+      selectedTitle.value = title;
       formData.value = selectedExample.value.formData;
     }
     const liveValidation = ref(false);
@@ -28,11 +28,12 @@ export default defineComponent({
 <template>
   <div>
     <select name="examples" :value="selectedExample.title">
-      <option v-for="(title, index) in exampleTitles" :key="index" @click="selectExample(index)" v-text="title" />
+      <option v-for="(title, index) in exampleTitles" :key="index" @click="selectExample(title)" v-text="title" />
     </select>
     <hr />
     <div class="grid">
       <FormBuilder
+        :key="selectedExample.title"
         :jsonSchema="selectedExample.jsonSchema"
         :uiSchema="selectedExample.uiSchema"
         v-model:formData="formData"
