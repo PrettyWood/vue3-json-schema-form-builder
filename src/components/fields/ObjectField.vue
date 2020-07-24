@@ -13,6 +13,7 @@ export default defineComponent({
     jsonSchema: { type: Object as PropType<JsonSchema>, required: true },
     uiSchema: { type: Object as PropType<UISchema<Record<string, any>>>, required: true },
     fieldName: { type: String, required: true },
+    required: { type: Boolean, required: true },
   },
   setup(props: FieldProps<Record<string, any>>, { emit }) {
     function onUpdate(fieldName: string, value: any) {
@@ -27,6 +28,7 @@ export default defineComponent({
       onUpdate,
       title: useTitle(props),
       description: useDescription(props),
+      isRequired: (fieldName: string): boolean => props.jsonSchema.required?.includes(fieldName) ?? false,
     };
   },
 });
@@ -44,6 +46,7 @@ export default defineComponent({
         :jsonSchema="fieldJsonSchema"
         :uiSchema="uiSchema[fieldName]"
         :fieldName="fieldName"
+        :required="isRequired(fieldName)"
         @update:formData="onUpdate(fieldName, $event)"
       />
     </fieldset>

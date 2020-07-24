@@ -13,6 +13,7 @@ export default defineComponent({
     jsonSchema: { type: Object as PropType<JsonSchema>, required: true },
     uiSchema: { type: Object as PropType<UISchema<number>>, required: true },
     fieldName: { type: String, required: true },
+    required: { type: Boolean, required: true },
   },
   setup(props: FieldProps<number>, { emit }) {
     function onUpdate(value: string) {
@@ -37,6 +38,7 @@ export default defineComponent({
       :modelValue="formData"
       :jsonSchema="jsonSchema"
       :uiSchema="uiSchema"
+      :required="required"
       @update:modelValue="onUpdate"
     />
   </div>

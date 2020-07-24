@@ -24,7 +24,8 @@ export default defineComponent({
     formData: { type: [Object, String, Number], default: undefined },
     jsonSchema: { type: Object as PropType<JsonSchema>, required: true },
     uiSchema: { type: Object as PropType<UISchema>, default: (): UISchema => ({}) },
-    fieldName: { type: String, default: '' },
+    fieldName: { type: String, required: true },
+    required: { type: Boolean, required: true },
   },
   setup(props: FieldProps, { emit }) {
     onMounted(() => {

@@ -10,10 +10,13 @@ export default defineComponent({
     modelValue: { type: [String, Number], default: undefined },
     jsonSchema: { type: Object as PropType<JsonSchema>, required: true },
     uiSchema: { type: Object as PropType<UISchema<string | number>>, required: true },
+    required: { type: Boolean, required: true },
   },
   setup(props: WidgetProps<string | number>) {
+    const defaultOptions = props.jsonSchema.enum ?? [];
     return {
-      options: props.jsonSchema.enum ?? []
+      // add empty option to remove value if field is optional
+      options: props.required ? defaultOptions : ['', ...defaultOptions],
     }
   }
 });

@@ -9,12 +9,14 @@ export interface FieldProps<T = any> {
   jsonSchema: JsonSchema;
   uiSchema: UISchema<T>;
   fieldName: string;
+  required: boolean;
 }
 
 export interface WidgetProps<T = any> {
   modelValue: T;
   jsonSchema: JsonSchema;
   uiSchema: UISchema<T>;
+  required: boolean;
 }
 
 export type Widget =

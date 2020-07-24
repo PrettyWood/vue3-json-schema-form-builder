@@ -10,6 +10,7 @@ export default defineComponent({
     modelValue: { type: [String, Number], default: undefined },
     jsonSchema: { type: Object as PropType<JsonSchema>, required: true },
     uiSchema: { type: Object as PropType<UISchema<string | number>>, required: true },
+    required: { type: Boolean, required: true },
   },
   setup(props: WidgetProps<string | number>, { attrs }) {
     const inputAttrs = computed<Record<string, any>>(() => {
