@@ -11,7 +11,8 @@ export default defineComponent({
   props: {
     formData: { type: Number, default: undefined },
     jsonSchema: { type: Object as PropType<JsonSchema>, required: true },
-    uiSchema: { type: Object as PropType<UISchema<number>>, default: (): UISchema<number> => ({}) },
+    uiSchema: { type: Object as PropType<UISchema<number>>, required: true },
+    fieldName: { type: String, required: true },
   },
   setup(props: FieldProps<number>, { emit }) {
     function onUpdate(value: string) {

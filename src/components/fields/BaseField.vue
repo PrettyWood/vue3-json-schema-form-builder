@@ -6,7 +6,7 @@ import { computed, defineAsyncComponent, defineComponent, onMounted, ComponentPu
 
 import NumberField from './NumberField.vue';
 import StringField from './StringField.vue';
-import { JsonSchema, JsonSchemaType, UISchema } from '/@/types';
+import { FieldProps, JsonSchema, JsonSchemaType, UISchema } from '/@/types';
 
 const FIELD_MAPPING: Record<JsonSchemaType, ComponentPublicInstance<any> | undefined> = {
   array: undefined,
@@ -24,8 +24,9 @@ export default defineComponent({
     formData: { type: [Object, String, Number], default: undefined },
     jsonSchema: { type: Object as PropType<JsonSchema>, required: true },
     uiSchema: { type: Object as PropType<UISchema>, default: (): UISchema => ({}) },
+    fieldName: { type: String, default: '' },
   },
-  setup(props, { emit }) {
+  setup(props: FieldProps, { emit }) {
     onMounted(() => {
       if (props.formData === undefined && props.jsonSchema.default !== undefined) {
         emit('update:formData', props.jsonSchema.default);

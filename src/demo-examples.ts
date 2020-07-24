@@ -90,7 +90,6 @@ const EXAMPLES: Example[] = [
         },
         email: {
           type: 'string',
-          title: 'Email'
         }
       },
     },

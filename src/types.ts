@@ -8,6 +8,7 @@ export interface FieldProps<T = any> {
   formData: T;
   jsonSchema: JsonSchema;
   uiSchema: UISchema<T>;
+  fieldName: string;
 }
 
 export type Widget =
