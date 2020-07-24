@@ -16,7 +16,8 @@ export type Widget =
   | 'password'
   | 'text'
   | 'textarea'
-  | 'updown';
+  | 'updown'
+  | 'url';
 
 export interface UISchemaBase {
   'ui:widget'?: Widget;

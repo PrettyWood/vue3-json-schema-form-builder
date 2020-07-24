@@ -8,6 +8,7 @@ import PasswordWidget from './PasswordWidget.vue';
 import TextWidget from './TextWidget.vue';
 import TextareaWidget from './TextareaWidget.vue';
 import UpDownWidget from './UpDownWidget.vue';
+import UrlWidget from './UrlWidget.vue';
 
 const WIDGET_MAPPING: Record<Widget, ComponentPublicInstance<any>> = {
   email: EmailWidget,
@@ -15,6 +16,7 @@ const WIDGET_MAPPING: Record<Widget, ComponentPublicInstance<any>> = {
   text: TextWidget,
   textarea: TextareaWidget,
   updown: UpDownWidget,
+  url: UrlWidget,
 };
 
 function getWidgetName(jsonSchema: JsonSchema, uiSchema: UISchema<string | number> | undefined): Widget {

@@ -90,7 +90,10 @@ const EXAMPLES: Example[] = [
         },
         email: {
           type: 'string',
-        }
+        },
+        website: {
+          type: 'string',
+        },
       },
     },
     uiSchema: {
@@ -115,6 +118,9 @@ const EXAMPLES: Example[] = [
       email: {
         'ui:widget': 'email',
       },
+      website: {
+        'ui:widget': 'url',
+      }
     },
     formData: {
       "lastName": "Norris",
