@@ -11,7 +11,7 @@ export default defineComponent({
   name: 'Demo',
   components: { FormBuilder },
   setup() {
-    let selectedTitle= ref('Object field - Numbers');
+    let selectedTitle= ref('Widgets');
     const exampleTitles = EXAMPLES.map((e) => e.title);
     const selectedExample = computed(() => EXAMPLES.find((e) => e.title === selectedTitle.value) ?? EXAMPLES[0]);
     function selectExample(title: string) {
